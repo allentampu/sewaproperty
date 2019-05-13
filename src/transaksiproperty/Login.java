@@ -5,6 +5,8 @@
  */
 package transaksiproperty;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Win10
@@ -67,13 +69,18 @@ public class Login extends javax.swing.JFrame {
 
         buttonMasuk.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         buttonMasuk.setText("MASUK");
+        buttonMasuk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonMasukActionPerformed(evt);
+            }
+        });
 
         lblTanya.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblTanya.setText("Belum punya akun? Buatlah!");
 
         buttonBuat.setText("BUAT");
 
-        lblLogo.setText("jLabel3");
+        lblLogo.setIcon(new javax.swing.ImageIcon("C:\\Allen\\labpbol\\z3.jpg")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,20 +120,20 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblJudul, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblLogo)))
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblJudul, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblLogo))
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblJudul, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
                 .addComponent(lblPerintah, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(17, 17, 17)
                 .addComponent(lblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -144,11 +151,24 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(lblTanya, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonBuat)
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(256, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMasukActionPerformed
+        // TODO add your handling code here:
+        String kataSandi = new String(fieldPassword.getPassword());
+        
+        if((fieldUsername.getText().equals("allen"))&&(kataSandi.equals("12345"))){
+            JOptionPane.showMessageDialog(this, "Anda Berhasil Login", "Pesan",JOptionPane.INFORMATION_MESSAGE);
+            new Laman().setVisible(true);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, "Maaf tidak Berhasil Login", "Pesan",JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_buttonMasukActionPerformed
 
     /**
      * @param args the command line arguments

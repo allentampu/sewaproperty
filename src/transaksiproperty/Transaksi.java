@@ -39,6 +39,7 @@ public class Transaksi extends javax.swing.JFrame {
         lblNohp = new javax.swing.JLabel();
         lblNohp1 = new javax.swing.JLabel();
         lblNohp2 = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,20 +54,22 @@ public class Transaksi extends javax.swing.JFrame {
 
         lblNorek.setText("Transfer ke salah satu nomor rekening di bawah");
 
-        lblNorek1.setText("Transfer ke salah satu nomor rekening di bawah");
+        lblNorek1.setText("0321654987");
 
-        lblNorek2.setText("Transfer ke salah satu nomor rekening di bawah");
+        lblNorek2.setText("0123456789");
 
-        lblNorek3.setText("Transfer ke salah satu nomor rekening di bawah");
+        lblNorek3.setText("0147258369");
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ATAU");
 
-        lblNohp.setText("Buat janji pembayaran dengan menhubungi salah satu nomor hp di bawah");
+        lblNohp.setText("081234567890");
 
-        lblNohp1.setText("Buat janji pembayaran dengan menhubungi salah satu nomor hp di bawah");
+        lblNohp1.setText("081212124545");
 
-        lblNohp2.setText("Buat janji pembayaran dengan menhubungi salah satu nomor hp di bawah");
+        lblNohp2.setText("081288995566");
+
+        lblLogo.setIcon(new javax.swing.ImageIcon("C:\\Allen\\labpbol\\z3.jpg")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,7 +79,6 @@ public class Transaksi extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblJudul, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblBiaya, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNorek)
                     .addComponent(lblNorek2)
@@ -85,14 +87,23 @@ public class Transaksi extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNohp)
                     .addComponent(lblNohp1)
-                    .addComponent(lblNohp2))
-                .addContainerGap(162, Short.MAX_VALUE))
+                    .addComponent(lblNohp2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblLogo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblJudul, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblJudul, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblLogo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(lblJudul, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(lblBiaya, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -113,7 +124,7 @@ public class Transaksi extends javax.swing.JFrame {
                 .addComponent(lblNohp1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblNohp2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
@@ -160,6 +171,7 @@ public class Transaksi extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JLabel lblBiaya;
     private javax.swing.JLabel lblJudul;
+    private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblNohp;
     private javax.swing.JLabel lblNohp1;
     private javax.swing.JLabel lblNohp2;
