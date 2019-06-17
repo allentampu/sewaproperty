@@ -5,6 +5,11 @@
  */
 package transaksiproperty;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 /**
@@ -79,6 +84,11 @@ public class Login extends javax.swing.JFrame {
         lblTanya.setText("Belum punya akun? Buatlah!");
 
         buttonBuat.setText("BUAT");
+        buttonBuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonBuatActionPerformed(evt);
+            }
+        });
 
         lblLogo.setIcon(new javax.swing.ImageIcon("C:\\Allen\\labpbol\\z3.jpg")); // NOI18N
 
@@ -160,15 +170,57 @@ public class Login extends javax.swing.JFrame {
     private void buttonMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMasukActionPerformed
         // TODO add your handling code here:
         String kataSandi = new String(fieldPassword.getPassword());
+            Statement stmt = null;
+            ResultSet rs = null;
+            Connection conn = null;
         
-        if((fieldUsername.getText().equals("allen"))&&(kataSandi.equals("12345"))){
-            JOptionPane.showMessageDialog(this, "Anda Berhasil Login", "Pesan",JOptionPane.INFORMATION_MESSAGE);
-            new Laman().setVisible(true);
-            this.dispose();
-        }else{
-            JOptionPane.showMessageDialog(this, "Maaf tidak Berhasil Login", "Pesan",JOptionPane.INFORMATION_MESSAGE);
-        }
+        try{
+                conn = DriverManager.getConnection("jdbc:mysql://localhost/transaksi?" + "user=root&password=");
+                stmt = conn.createStatement();
+                rs = stmt.executeQuery("SELECT COUNT(*) FROM user WHERE username='"+fieldUsername.getText()+"' and password='"+kataSandi+"'");
+                rs = stmt.getResultSet();
+                //ngambil nilainya
+                rs.next();
+                int ada = rs.getInt(1);
+                if(ada==0){
+                    JOptionPane.showMessageDialog(this,"Username atau Password salah!", "ERROR LOGIN!", JOptionPane.ERROR_MESSAGE);
+                }else{
+                    JOptionPane.showMessageDialog(this, "Berhasil Login", "Login", JOptionPane.INFORMATION_MESSAGE);
+                    new Laman().setVisible(true);
+                    this.dispose();
+                }
+            }
+                //gunakan variabel rs
+                catch (SQLException ex){
+                        //mengatasi Error
+                        System.out.println("SQLException: " + ex.getMessage());
+                        System.out.println("SQLState: " + ex.getSQLState());
+                        System.out.println("VendorError: " + ex.getErrorCode());
+                        } finally{
+                                if(rs != null){
+                                    try{
+                                        rs.close();
+                                    } catch (SQLException sqlEx){}//ignore
+                                rs = null;
+                                }
+                                if(stmt != null){
+                                    try{
+                                        rs.close();
+                                    } catch (SQLException sqlEx){}//ignore
+                                rs = null;
+                                }
+                                if(stmt != null){
+                                    try{
+                                        stmt.close();
+                                    } catch (SQLException sqlEx){}
+                                stmt = null;
+                                }
+                        }
     }//GEN-LAST:event_buttonMasukActionPerformed
+
+    private void buttonBuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuatActionPerformed
+        new Daftar().setVisible(true);
+    }//GEN-LAST:event_buttonBuatActionPerformed
 
     /**
      * @param args the command line arguments
